@@ -6,11 +6,12 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
 </head>
-<body style="align-content: center" >
+<body style="align-content: center;font-family:'標楷體'" >
     <form id="form1" runat="server" >
-        <div>
-            <asp:Panel ID="Panel1" runat="server" GroupingText="歡迎來到課表產生器"  Direction="LeftToRight" Height="200px" style="z-index: 1; left: 200px; top: 93px; position: absolute; height: 247px; width: 337px">
+        <div aria-grabbed="undefined" aria-multiline="False" class="flex">
+            <asp:Panel ID="Panel1" runat="server" GroupingText="歡迎來到課表產生器" Height="276px" CssClass="flex" Width="326px">
                 <br />
                 　　<asp:Label ID="Label2" runat="server" Text="帳號："></asp:Label>
                 <asp:TextBox ID="user_1" runat="server" Width="180px" ValidationGroup="AC"></asp:TextBox>
@@ -36,14 +37,10 @@
             </asp:Panel>
             <br />
         </div>
+        <asp:Label ID="Label3" runat="server" CssClass="flex"></asp:Label>
         <br />
         <br />
         <br />
-        <asp:SqlDataSource ID="login" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT [user_name] FROM [User_log] WHERE ([user_name] = @user_name)" CancelSelectOnNullParameter="False">
-            <SelectParameters>
-                <asp:Parameter Name="user_name" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <p>
             &nbsp;</p>
         <p>
@@ -58,7 +55,6 @@
             &nbsp;</p>
         <p style="margin-left: 160px">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label3" runat="server"></asp:Label>
         </p>
     </form>
 </body>

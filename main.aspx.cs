@@ -139,7 +139,6 @@ namespace thinkTwice
                             test3 += test1[x];
                         }
                     }
-                    //Label3.Text = test2 + "<br/>" + test3;
                     if (test3 == test2)
                     {
                         checkR = -1;
@@ -161,7 +160,7 @@ namespace thinkTwice
             objDR.Close(); // 關閉DataReader
             objCon.Close(); // 關閉資料庫連接
         }
-        
+
         //註冊器(新增之帳號寫入SQL)
         protected void register()
         {
@@ -181,7 +180,6 @@ namespace thinkTwice
             id = id + 1;
             strSQL = "INSERT INTO [User_log] " +
                      "VALUES('" + id + "',N'" + account + "',N'" + pass_check + "')";
-            //"INSERT INTO User_log VALUES("+id+,"'Max'",'1200')"
             //建立Command物件的SQL指令
             objCmd = new SqlCommand(strSQL, objCon);
             if (pass == pass_check)
@@ -196,11 +194,70 @@ namespace thinkTwice
             }
             objCon.Close(); // 關閉資料庫連接
         }
+        string w_text = null;
+        //week轉換器
+        void week_to_text(string w)
+        {
 
+            if (w == "0")
+            {
+                w_text = "星期一";
+
+            }
+            if (w == "1")
+            {
+                w_text = "星期二";
+            }
+            if (w == "2")
+            {
+                w_text = "星期三";
+            }
+            if (w == "3")
+            {
+                w_text = "星期四";
+            }
+            if (w == "4")
+            {
+                w_text = "星期五";
+            }
+        }
+        protected void clearclass()
+        {
+            pass = password_1.Text;
+            pass_check = password_2.Text;
+            SqlConnection objCon;
+            SqlCommand objCmd;
+            string strDbCon, strSQL;
+            // 資料庫連接字串
+            strDbCon = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                        "AttachDbFilename=" +
+                         Server.MapPath("App_Data\\database.mdf") +
+                        ";Integrated Security=True";
+            objCon = new SqlConnection(strDbCon);
+            objCon.Open(); // 開啟資料庫連接
+                           //資料insertSQL指令
+            for (int y = 0; y < 14; y++)
+            {
+                for(int x = 0; x < 5; x++) {
+                string section_db = y.ToString();
+                    week_to_text(x.ToString());
+                string week_text = w_text;
+                strSQL = "UPDATE [class] " + "SET " + week_text + " = NULL "
+                       + "WHERE id='" + section_db + "'";
+                //建立Command物件的SQL指令
+                objCmd = new SqlCommand(strSQL, objCon);
+                    //執行
+                    objCmd.ExecuteNonQuery();
+                    //驗證訊息
+                    //Label3.Text = strSQL;
+                }
+            }
+            objCon.Close(); // 關閉資料庫連接
+        }
         //登入按鈕
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (user_1.Text == "\0") //這個沒有效用，null並沒有判斷好，是否要增加驗證控制項:(
+            if (user_1.Text == "\0") //已增加驗證控制項
             {
                 Label3.Text = "空的!";
             }
@@ -211,6 +268,7 @@ namespace thinkTwice
                 checkLogin();
                 if (checkO == 1)
                 {
+                    clearclass();
                     Response.Redirect("select_class.aspx");
                 }
                 else if (checkO == 2)
@@ -268,7 +326,7 @@ namespace thinkTwice
             }
             else
             {
-                Label3.Text += "請確認密碼。";
+                Label3.Text = "請確認密碼。";
                 Register_button.Visible = false;
                 Register_button0.Visible = true;
 

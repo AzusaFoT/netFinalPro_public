@@ -75,11 +75,20 @@
     <Content Include="App_Data\user_log.ldf">
       <DependentUpon>user.mdf</DependentUpon>
     </Content>
+    <Content Include="Class_table.aspx" />
     <Content Include="main.aspx" />
     <Content Include="select_class.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class_table.aspx.cs">
+      <DependentUpon>Class_table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Class_table.aspx.designer.cs">
+      <DependentUpon>Class_table.aspx</DependentUpon>
+    </Compile>
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
