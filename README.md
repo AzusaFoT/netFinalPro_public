@@ -20,7 +20,10 @@ CBE109048 徐采碟<br/>
 
 架構圖:
 ===
-![image](https://i.imgur.com/h6C6Cqf.png)
+![image](https://i.imgur.com/yUP2Opd.png)
+![image](https://i.imgur.com/W51utYe.png)
+
+
 
 程式碼:
 ===
@@ -45,4 +48,16 @@ CBE109048 徐采碟<br/>
 7.註冊器:
 ---
 ![註冊器](https://i.imgur.com/Q011JAi.png)
-<待施工>
+8.陣列索引/上課節別轉換器:
+---
+![changer](https://i.imgur.com/PBtiJkB.png)
+9.空格祓除器:
+---
+![space](https://i.imgur.com/7zU48Ph.png)
+10.更新用之SQL語法:
+---
+![sql](https://i.imgur.com/fnU5gF3.png)
+11.資料更新器:
+---
+![updater](https://i.imgur.com/1tfYa4Y.png)
+
